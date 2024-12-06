@@ -1,0 +1,27 @@
+<title>MD5</title>
+
+<textarea placeholder="Plain Text" id="text" oninput="document.getElementById('ptext').value = SHAencrypt(document.getElementById('text').value);"></textarea><br>
+
+<textarea placeholder="MD5" id="ptext" readonly></textarea>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js"></script>
+
+<script>
+    document.getElementById('ptext').value = SHAencrypt(document.getElementById('text').value);
+    function SHAencrypt(text) {
+        return CryptoJS.MD5(text);
+    }
+</script>
+
+<style>
+    textarea {
+        resize: none;
+        width: 100%;
+        height: 50%;
+    }
+
+    button {
+        width: 50%;
+        height: 7%;
+    }
+</style>
