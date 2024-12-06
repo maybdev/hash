@@ -1,0 +1,41 @@
+<title>AES</title>
+
+<textarea placeholder="Plain Text/AES" id="text" oninput="dencrypt();"></textarea><br>
+<textarea placeholder="Plain Text Key" id="key" oninput="dencrypt();"></textarea><br>
+
+<button onclick="document.getElementById('encrypt').disabled = true; document.getElementById('decrypt').disabled = false; dencrypt();" id="encrypt" disabled>Encrypt</button><button onclick="document.getElementById('encrypt').disabled = false; document.getElementById('decrypt').disabled = true; dencrypt();" id="decrypt">Decrypt</button><br>
+
+<textarea placeholder="Out" id="ptext" readonly></textarea>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js"></script>
+
+<script>
+    function AESencrypt(text, key) {
+        return CryptoJS.AES.encrypt(text, key).toString();
+    }
+
+    function AESdecrypt(text, key) {
+        return CryptoJS.AES.decrypt(text, key).toString(CryptoJS.enc.Utf8);
+    }
+
+    function dencrypt() {
+        if (document.getElementById("encrypt").disabled) {
+            document.getElementById('ptext').value = AESencrypt(document.getElementById('text').value, document.getElementById('key').value);
+        } else {
+            document.getElementById('ptext').value = AESdecrypt(document.getElementById('text').value, document.getElementById('key').value);
+        }
+    }
+</script>
+
+<style>
+    textarea {
+        resize: none;
+        width: 100%;
+        height: 31%;
+    }
+
+    button {
+        width: 50%;
+        height: 7%;
+    }
+</style>
