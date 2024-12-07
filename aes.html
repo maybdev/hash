@@ -10,6 +10,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js"></script>
 
 <script>
+    document.getElementById('ptext').value = AESencrypt(document.getElementById('text').value, document.getElementById('key').value);
     function AESencrypt(text, key) {
         return CryptoJS.AES.encrypt(text, key).toString();
     }
